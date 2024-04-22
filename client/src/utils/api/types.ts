@@ -23,7 +23,7 @@ export interface Project {
 export interface NewStory {
   title: string;
   description: string;
-  assignedTo?: string;
+  assignedTo?: string | null;
   type: "bug" | "story";
   priority: -1 | 0 | 1;
   status?: "to-do" | "in-progress" | "in-testing" | "done" | "blocked";

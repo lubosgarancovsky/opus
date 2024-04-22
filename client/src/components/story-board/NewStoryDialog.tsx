@@ -28,11 +28,13 @@ export const NewStoryDialog = () => {
   const { data } = useSession();
 
   const handleSubmit = async (formData: FormData) => {
+    const assignee = formData.get("assignee") as string;
+    console.log("ASSIGNEE", assignee);
     const newStory: NewStory = {
       title: formData.get("title") as string,
       description: formData.get("description") as string,
       type: formData.get("type") as "bug" | "story",
-      assignedTo: formData.get("assignee") as string,
+      assignedTo: assignee === "no-assignee" ? null : assignee,
       priority: Number(formData.get("priority")) as -1 | 0 | 1,
     };
 
