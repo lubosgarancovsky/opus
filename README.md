@@ -1,6 +1,6 @@
 # Opus
 
-Jira board clone where projects are not organized under tenants, but directly under the users accounts. Instead of creating teams, owner of a project can invite collaborators.
+Monolithic Jira board clone where projects are not organized under tenants, but directly under the users accounts. Instead of creating teams, owner of a project can invite collaborators.
 
 Project consists of a **Spring Boot** backend and **Next.js** frontend with **PostgreSQL** as a database.
 
