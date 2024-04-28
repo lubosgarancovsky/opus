@@ -1,9 +1,18 @@
-import { handler } from "@/utils/api/axios/server/requestHandler";
+import { handler } from '@/utils';
+import { NextRequest } from 'next/server';
 
-export async function GET(request: Request) {
-  return handler(request);
+export async function GET(req: NextRequest) {
+  return handler(req);
 }
 
-export async function POST(request: Request) {
-  return handler(request);
+export async function POST(req: NextRequest) {
+  return handler(req);
+}
+
+export async function PUT(req: NextRequest) {
+  return handler(req);
+}
+
+export async function DELETE(req: NextRequest) {
+  return handler(req);
 }

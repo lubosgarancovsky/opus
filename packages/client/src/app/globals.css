@@ -33,6 +33,10 @@
     --ring: 240 10% 3.9%;
 
     --radius: 0.5rem;
+
+    --success: 118deg 90% 43%;
+    --warning: 37deg 90% 43%;
+    --danger: 349deg 90% 43%;
   }
 
   .dark {
@@ -71,7 +75,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-slate-100 text-foreground;
   }
 
   h1 {
@@ -85,20 +89,5 @@
   }
   h4 {
     @apply scroll-m-20 text-xl font-semibold tracking-tight;
-  }
-  h5 {
-    @apply scroll-m-20 text-sm font-bold tracking-tight;
-  }
-  p {
-    @apply leading-7;
-  }
-  blockquote {
-    @apply mt-6 border-l-2 pl-6 italic;
-  }
-
-  @layer components {
-    .progressbar > div {
-      @apply bg-green-500;
-    }
   }
 }
