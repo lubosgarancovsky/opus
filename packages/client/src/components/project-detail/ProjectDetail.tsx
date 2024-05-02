@@ -40,7 +40,7 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, stories, 
     <main>
       <div className="flex items-center justify-between w-full">
         <div className="max w-[32rem]">
-          <h3>{project.title}</h3>
+          <h1>{project.title}</h1>
           <p>{project.description}</p>
         </div>
         <Collaborations />

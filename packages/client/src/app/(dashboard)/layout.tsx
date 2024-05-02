@@ -22,12 +22,8 @@ export default async function RootLayout({
     <html lang="en">
       <Providers session={session}>
         <body className={font.className}>
-          <div className="grid grid-cols-12">
-            <nav className="col-span-2 bg-white">
-              <Sidebar />
-            </nav>
-            <div className="col-span-10 p-12">{children}</div>
-          </div>
+          <Sidebar />
+          <div className="ml-48 p-12">{children}</div>
         </body>
       </Providers>
     </html>

@@ -6,6 +6,7 @@ import { Story } from '../Story';
 import { useSelector } from 'react-redux';
 import { StoryDetail } from '@/components';
 import { useBoard } from './useBoard.hook';
+import { Badge } from '@/components/ui/badge';
 
 const BoardColumn = forwardRef<HTMLDivElement, { stories: StoryType[]; status: string }>(
   ({ stories, status }, ref) => {
@@ -13,13 +14,13 @@ const BoardColumn = forwardRef<HTMLDivElement, { stories: StoryType[]; status: s
 
     return (
       <div className="flex flex-col gap-4">
-        <div className="font-bold bg-white shadow rounded p-3 flex justify-between items-center">
+        <div className="font-bold bg-slate-200 rounded-xl p-3 flex justify-between items-center">
           <span>{storyState(status)}</span>
-          <span className="text-sm text-slate-400">{stories.length}</span>
+          <Badge className="bg-slate-600 hover:bg-slate-600">{stories.length}</Badge>
         </div>
         <div
           ref={ref}
-          className={cn('flex flex-col gap-4 rounded min-h-screen', {
+          className={cn('flex flex-col gap-4 rounded-xl min-h-[42rem] p-1.5 overflow-y-auto', {
             'border-2 border-dashed border-slate-400 bg-slate-200': isDragging,
             'border-success bg-success/20': isDragging && status === 'done',
             'border-danger bg-danger/20': isDragging && status === 'blocked'

@@ -1,7 +1,7 @@
 package io.github.lubosgarancovsky.Opus.config;
 
-import io.github.lubosgarancovsky.Opus.api.user.model.User;
-import io.github.lubosgarancovsky.Opus.api.user.service.UserService;
+import io.github.lubosgarancovsky.Opus.api.model.User;
+import io.github.lubosgarancovsky.Opus.api.service.users.UserService;
 import io.github.lubosgarancovsky.Opus.utils.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

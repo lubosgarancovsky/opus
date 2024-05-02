@@ -5,6 +5,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -17,7 +18,11 @@ import { createProject } from '@/utils';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 
-export const NewProjectDialog = ({ children }) => {
+interface NewDialogProps {
+  children: React.ReactNode;
+}
+
+export const NewProjectDialog: React.FC<NewDialogProps> = ({ children }) => {
   const router = useRouter();
 
   const mutation = useMutation({
@@ -42,7 +47,8 @@ export const NewProjectDialog = ({ children }) => {
       <DialogTrigger>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>New Project</DialogTitle>
+          <DialogTitle>Create project</DialogTitle>
+          <DialogDescription>Begin a journey by starting a new project</DialogDescription>
         </DialogHeader>
         <div>
           <form className="flex flex-col gap-4" action={handleSubmit}>

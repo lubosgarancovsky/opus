@@ -1,6 +1,6 @@
 package io.github.lubosgarancovsky.Opus.config;
 
-import io.github.lubosgarancovsky.Opus.api.user.repository.UserRepository;
+import io.github.lubosgarancovsky.Opus.api.repository.UsersRepository;
 import io.github.lubosgarancovsky.Opus.error.ApiException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,15 +15,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class ApplicationConfig {
 
-    private final UserRepository userRepository;
+    private final UsersRepository usersRepository;
 
-    public ApplicationConfig(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public ApplicationConfig(UsersRepository usersRepository) {
+        this.usersRepository = usersRepository;
     }
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return id -> userRepository.findById(id).orElseThrow(() -> new ApiException(404, "User not found"));
+        return id -> usersRepository.findById(id).orElseThrow(() -> new ApiException(404, "User not found"));
     }
 
     @Bean

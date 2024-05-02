@@ -3,13 +3,24 @@ import { Bookmark, Bug, Person } from '@/components/icons';
 import { Story as StoryType, cn, initials } from '@/utils';
 import { Avatar } from '@/components/common';
 import { useStory } from './useStory.hook';
+import { Badge } from '@/components/ui/badge';
 
 const StoryTypeIcon: React.FC<{ type: StoryType['type'] }> = ({ type }) => (
   <>
     {type === 'story' ? (
-      <Bookmark className="w-4 text-success" />
+      <Badge>
+        <div className="flex gap-2">
+          <Bookmark className="w-4" />
+          STORY
+        </div>
+      </Badge>
     ) : (
-      <Bug className="w-4 text-danger" />
+      <Badge className="bg-danger hover:bg-danger">
+        <div className="flex gap-2">
+          <Bug className="w-4" />
+          BUG
+        </div>
+      </Badge>
     )}
   </>
 );
@@ -41,16 +52,10 @@ export const Story: React.FC<{ story: StoryType }> = ({ story }) => {
       onDragStart={onDragStart}
       onDragEnd={onDragEnd}
       onClick={onClick}
-      className={cn(
-        'bg-white rounded shadow p-3 flex flex-col border-l-4 text-left hover:bg-neutral-50',
-        {
-          'border-success': story.type === 'story',
-          'border-danger': story.type === 'bug'
-        }
-      )}
+      className={cn('bg-slate-200 rounded p-4 flex flex-col text-left hover:bg-slate-300')}
     >
       <b className="text-sm">{story.code}</b>
-      <span>{story.title}</span>
+      <p>{story.title}</p>
 
       <div className="mt-4 flex items-center gap-3 w-full">
         <StoryTypeIcon type={story.type} />

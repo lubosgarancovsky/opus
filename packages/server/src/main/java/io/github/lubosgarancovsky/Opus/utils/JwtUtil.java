@@ -1,5 +1,5 @@
 package io.github.lubosgarancovsky.Opus.utils;
-import io.github.lubosgarancovsky.Opus.api.user.model.User;
+import io.github.lubosgarancovsky.Opus.api.model.User;
 import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;

@@ -56,3 +56,10 @@ export const toDate = (timestamp: string) => {
 
   return americanDateString;
 };
+
+export const trunctate = (str: string, count = 80) => {
+  if (str.length > count) {
+    return str.slice(0, count) + '...';
+  }
+  return str;
+};

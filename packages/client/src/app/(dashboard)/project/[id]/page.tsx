@@ -7,7 +7,7 @@ import { Collaboration } from '@/utils/api/collaborations';
 const fetchProjectDetail = async (id: string): Promise<Project | null> => {
   try {
     const session = await auth();
-    const response = await axios.get(`${baseUrl()}/v1/project/${id}`, {
+    const response = await axios.get(`${baseUrl()}/v1/projects/${id}`, {
       headers: {
         ...(session ? { Authorization: `Bearer ${session.accessToken}` } : {})
       }
@@ -22,7 +22,7 @@ const fetchProjectDetail = async (id: string): Promise<Project | null> => {
 const fetchStories = async (id: string): Promise<Story[]> => {
   try {
     const session = await auth();
-    const response = await axios.get(`${baseUrl()}/v1/project/${id}/story`, {
+    const response = await axios.get(`${baseUrl()}/v1/projects/${id}/stories`, {
       headers: {
         ...(session ? { Authorization: `Bearer ${session.accessToken}` } : {})
       }
@@ -37,7 +37,7 @@ const fetchStories = async (id: string): Promise<Story[]> => {
 const fetchCollaborations = async (id: string): Promise<Page<Collaboration>> => {
   try {
     const session = await auth();
-    const response = await axios.get(`${baseUrl()}/v1/project/${id}/collaboration`, {
+    const response = await axios.get(`${baseUrl()}/v1/projects/${id}/collaborations`, {
       headers: {
         ...(session ? { Authorization: `Bearer ${session.accessToken}` } : {})
       }
