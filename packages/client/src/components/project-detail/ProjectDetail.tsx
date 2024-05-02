@@ -12,6 +12,7 @@ import { Collaborations } from './Collaborations';
 import { Button } from '../ui/button';
 import { Settings } from '../icons';
 import { Collaboration } from '@/utils/api/collaborations';
+import { useRouter } from 'next/navigation';
 
 interface ProjectDetailProps {
   project: Project;
@@ -21,6 +22,7 @@ interface ProjectDetailProps {
 
 export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, stories, collabs }) => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   useEffect(() => {
     dispatch(setProject(project));
@@ -46,9 +48,15 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, stories, 
           <div className="w-[24rem]">
             <BoardProgress />
           </div>
-          <Button variant="outline" size="icon">
+
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => router.push(`/project/${project.id}/settings`)}
+          >
             <Settings className="w-5" />
           </Button>
+
           <NewStoryDialog>
             <Button>New story</Button>
           </NewStoryDialog>

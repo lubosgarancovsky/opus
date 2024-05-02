@@ -28,7 +28,7 @@ import { stories } from '@/store/features/ProjectSlice';
 
 export const NewStoryDialog: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { project } = useSelector((state: any) => state.project);
-  const [assignedTo, setAssignedTo] = React.useState<string | null>(null);
+  const [assignedTo, setAssignedTo] = React.useState<any>(null);
   const dispatch = useDispatch();
 
   const [isOpen, setIsOpen] = React.useState(false);
@@ -56,7 +56,7 @@ export const NewStoryDialog: React.FC<{ children: React.ReactNode }> = ({ childr
       description: formData.get('description') as string,
       type: formData.get('type') as string,
       priority: Number(formData.get('priority') as string),
-      assignedTo: assignedTo
+      assignedTo: assignedTo?.id ?? null
     };
 
     mutation.mutate(storyDto);
@@ -118,7 +118,7 @@ export const NewStoryDialog: React.FC<{ children: React.ReactNode }> = ({ childr
                 <SelectItem value="1" className="flex flex-row gap-2 items-center">
                   <div className="flex gap-2 items-center">
                     <span className="w-2 h-2 rounded-full bg-danger block" />
-                    <span className="block">Heigh</span>
+                    <span className="block">High</span>
                   </div>
                 </SelectItem>
               </SelectContent>

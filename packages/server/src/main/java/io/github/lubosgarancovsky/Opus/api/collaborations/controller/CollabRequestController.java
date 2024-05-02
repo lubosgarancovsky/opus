@@ -4,11 +4,11 @@ import io.github.lubosgarancovsky.Opus.api.collaborations.dao.NewCollabRequestDa
 import io.github.lubosgarancovsky.Opus.api.collaborations.model.CollabRequest;
 import io.github.lubosgarancovsky.Opus.api.collaborations.model.CollabMapper;
 import io.github.lubosgarancovsky.Opus.api.collaborations.service.CollabRequestService;
-import io.github.lubosgarancovsky.Opus.shared.pagination.PageEntity;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/v1/collaboration/request")
@@ -27,14 +27,10 @@ public class CollabRequestController {
 
     @GetMapping
     public ResponseEntity<?> listRequests(HttpServletRequest request,
-                                          @RequestParam(name = "page", defaultValue = "1", required = false) int page,
-                                          @RequestParam(name = "page-size", defaultValue = "10", required = false) int pageSize,
                                           @RequestParam(name = "filter", required = false) String filter) {
 
-        Page<CollabRequest> pageResponse = this.collabRequestService.listRequests(request, page, pageSize, filter);
-        return ResponseEntity.ok(
-                new PageEntity<>(pageResponse, CollabMapper::toRequest).map()
-        );
+        List<CollabRequest> requests = this.collabRequestService.listRequests(request, filter);
+        return ResponseEntity.ok(requests.stream().map(CollabMapper::toRequest).toList());
     }
 
     @PostMapping("/{id}/accept")

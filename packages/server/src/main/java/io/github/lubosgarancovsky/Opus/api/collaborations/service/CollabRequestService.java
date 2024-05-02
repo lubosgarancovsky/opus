@@ -20,6 +20,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class CollabRequestService {
@@ -78,7 +79,7 @@ public class CollabRequestService {
         return "OK";
     }
 
-    public Page<CollabRequest> listRequests(HttpServletRequest request, int page, int pageSize, String filter) {
+    public List<CollabRequest> listRequests(HttpServletRequest request, String filter) {
 
         String userId = this.jwtUtil.extractSubject(request);
 
@@ -86,9 +87,11 @@ public class CollabRequestService {
         Specification<CollabRequest> spec = RSQLJPASupport.toSpecification(filter);
         Specification<CollabRequest> spec2 = RSQLJPASupport.toSpecification("senderId==" + userId + ",recipientId==" + userId);
 
-        PageRequest pageRequest = PageRequest.of(page - 1, pageSize, sort);
+        return this.collabRequestRepository.findAll(spec.and(spec2), sort);
+    }
 
-        return this.collabRequestRepository.findAll(spec.and(spec2), pageRequest);
+    public List<CollabRequest> listRequestsByProjectId(String id) {
+        return this.collabRequestRepository.findAllByProjectId(id);
     }
 
     public String acceptRequest(HttpServletRequest request, String id) {

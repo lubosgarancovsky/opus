@@ -14,3 +14,19 @@ export const listCollaborationsByProject = async (projectId: string, assignedTo?
     )
   );
 };
+
+export const listRequests = async () => {
+  return resolve(axios.get(`/api/v1/collaboration/request`));
+};
+
+export const listRequestsByProject = async (projectId: string) => {
+  return resolve(axios.get(`/api/v1/project/${projectId}/collaboration-request`));
+};
+
+export const acceptRequest = async (id: string) => {
+  return resolve(axios.post(`/api/v1/collaboration/request/${id}/accept`));
+};
+
+export const declineRequest = async (id: string) => {
+  return resolve(axios.delete(`/api/v1/collaboration/request/${id}/decline`));
+};

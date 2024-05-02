@@ -44,3 +44,15 @@ export const emptyPage = <T>(): Page<T> => {
     pageSize: 0
   };
 };
+
+export const toDate = (timestamp: string) => {
+  const date = new Date(timestamp);
+
+  const month = ('0' + (date.getMonth() + 1)).slice(-2);
+  const day = ('0' + date.getDate()).slice(-2);
+  const year = date.getFullYear();
+
+  const americanDateString = `${month}/${day}/${year}`;
+
+  return americanDateString;
+};

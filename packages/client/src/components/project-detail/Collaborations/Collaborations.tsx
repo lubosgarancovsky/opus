@@ -36,6 +36,7 @@ const InvitationDialog: React.FC<{ isOpen: boolean; onClose: () => void; project
       if (!inputRef.current.value) return;
 
       mutation.mutate(inputRef.current.value);
+      onClose();
       inputRef.current.value = '';
     }
   };
@@ -48,7 +49,7 @@ const InvitationDialog: React.FC<{ isOpen: boolean; onClose: () => void; project
         </DialogHeader>
         <div>
           <Label>E-mail</Label>
-          <Input type="email" placeholder="john.doe@gmail.com" />
+          <Input ref={inputRef} type="email" placeholder="john.doe@gmail.com" />
         </div>
         <DialogFooter>
           <Button onClick={handleClick}>Invite</Button>

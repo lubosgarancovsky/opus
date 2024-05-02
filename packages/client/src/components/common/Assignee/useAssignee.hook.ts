@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { listCollaborationsByProject } from '@/utils/api/collaborations';
 import { useQuery } from '@tanstack/react-query';
 import { useSession } from 'next-auth/react';
@@ -47,6 +47,10 @@ export const useAssignee = ({ label, onChange, assignee }: AssigneeProps) => {
 
     return [] as Story[];
   }, [status, data]);
+
+  useEffect(() => {
+    onChange(null);
+  }, [open]);
 
   return {
     data: allData,

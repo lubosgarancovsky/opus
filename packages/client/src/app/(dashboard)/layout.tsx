@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import { Nunito } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import { Providers, Sidebar } from '@/components';
 import { auth } from '@/auth';
 import '../globals.css';
 
-const font = Nunito({ subsets: ['latin'] });
+const font = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Opus',
